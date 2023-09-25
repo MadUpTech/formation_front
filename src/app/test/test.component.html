@@ -1,0 +1,19 @@
+<button (click)="test()" class="btn btn-sm btn-success">Test</button>
+
+<button (click)="isTest()">Token</button>
+<label>
+    <input type="checkbox" [(ngModel)]="isChecked" (change)="onCheckBoxChange()">
+    Case à cocher
+</label>
+<owl-carousel-o [options]="customOptions">
+    <ng-container>
+        <ng-template carouselSlide>
+            <img class="full-width-image" src="./../../assets/images/background.png">
+        </ng-template>
+    </ng-container>
+    <ng-container>
+        <ng-template carouselSlide>
+            <img class="full-width-image" src="./../../assets/images/bg14.jpg">
+        </ng-template>
+    </ng-container>
+</owl-carousel-o>

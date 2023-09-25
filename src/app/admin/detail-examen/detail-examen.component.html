@@ -1,0 +1,84 @@
+<div class="details__container">
+    <header>
+        <div class="__module">
+            <span>Module n°: {{idModule}}</span>
+            <div class="activation">
+                <button *ngIf="isModuleSuivant" (click)="activeModuleSuivant()" class="btn btn-sm btn-success">Module
+                    {{moduleSuivant}}
+                    Activer</button>
+            </div>
+        </div>
+        <div class="__client">
+            <span>Client : {{isClient.nom}}</span>
+            <span>Telephone : {{isClient.telephone}}</span>
+            <span>Email : {{isClient.email}}</span>
+        </div>
+    </header>
+    <main>
+        <div class="examen__list">
+            <div *ngFor="let item of listExamen; let i=index" class="card">
+                <div class="card-header">
+                    <span>Examan n°: {{i + 1}}</span>
+                </div>
+                <div class="card-body">
+                    <div *ngIf="item.status==0" class="status__invalide">
+                        <span>Status: <span class="span__status">Entendre</span></span>
+                    </div>
+                    <div *ngIf="item.status ==1" class="status__valide">
+                        <div class="span__status">
+                            <div>
+                                <span>Status: <span class="span__status">Ok</span></span>
+                            </div>
+                            <div>
+                                <span *ngIf="item.isCorrection==1">Correction: <span
+                                        class="span__status">Ok</span></span>
+                            </div>
+                        </div>
+                        <div class="button__info">
+                            <button [disabled]="isDisabled"
+                                (click)="telechargerExamen(item.id!,item.fileByModule?.fileName!)"
+                                class="btn btn-sm btn-success">Telecharger</button>
+                            <button [disabled]="isDisabled" *ngIf="item.isCorrection==0"
+                                (click)="annullerExamen(item.id!)" class="btn btn-sm btn-danger">Annuller</button>
+                        </div>
+                        <div *ngIf="item.isCorrection==0" class="button__corriger">
+                            <button [disabled]="isDisabled" (click)="openModalCorrection(item.id!)"
+                                class="btn btn-sm btn-primary">Corriger</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="list_correction">
+            <span class="loader"></span>
+        </div>
+
+        <!--__modal___correction__examen _-->
+        <div class="correction__examen" *ngIf="isModalCorrection">
+            <form [formGroup]="formCorrection" (ngSubmit)="handleCorrection()">
+                <div class="form-title">
+                    <span>Correction examen</span>
+                </div>
+                <div class="form-group">
+                    <label for="label">Status</label>
+                    <select formControlName="status" class="form-select" name="" id="">
+                        <option value=""></option>
+                        <option value="Bien">Bien</option>
+                        <option value="Moyenne">Moyenne</option>
+                        <option value="Mediocre">Mediocre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Fichier</label>
+                    <input type="file" (change)="onSelectFile($event)" formControlName="isFile" class="form-control">
+                </div>
+                <div class="button">
+                    <button class="btn btn-sm btn-primary">Enregistrer</button>
+                    <a (click)="annullerCorrection()" class="btn btn-sm btn-danger">Annuller</a>
+                </div>
+            </form>
+        </div>
+
+    </main>
+</div>

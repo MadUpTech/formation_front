@@ -1,0 +1,21 @@
+<div class="voir_videos_container">
+    <div class="__left">
+        <vg-player class="vg-player">
+            <video controls preload="metadata" [style.height.%]="100">
+                <source [src]="urlStreaming + idVideo">
+            </video>
+        </vg-player>
+        <div class="">
+            <span>{{nomFile}}</span>
+        </div>
+    </div>
+    <div class="__rigth">
+        <span class="isTitle">Autre videos module {{idModule}}</span>
+        <vg-player class="vg-player" *ngFor="let item of listVideos">
+            <video preload="metadata" (click)="voirVideo(item.id!,item.extension!)">
+                <source [src]="urlStreaming+item.id+item.extension">
+            </video>
+            <span>Titre: {{item.fileName}}</span>
+        </vg-player>
+    </div>
+</div>
