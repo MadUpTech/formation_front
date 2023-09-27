@@ -1,0 +1,101 @@
+.sider__containair {
+    height: 50px;
+    box-shadow: 3px 3px 3px rgb(247, 246, 244);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .sider__left {
+        position: relative;
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+
+            .__mon__App {
+                span {
+                    color: rgb(133, 99, 99);
+                    font-size: 22px;
+                }
+            }
+
+            .icon {
+                cursor: pointer;
+            }
+
+            @media screen and(min-width:600.4px) {
+                display: none;
+            }
+        }
+
+        .nav__bar {
+            background-color: rgba(92, 82, 82);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 17;
+            height: auto;
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            gap: 1.2rem;
+            border-radius: 0 10px 10px 0;
+            padding-bottom: 1rem;
+            width: 200px;
+            padding-top: 1rem;
+
+            @media screen and(min-width:600.4px) {
+                display: none;
+            }
+
+            a {
+
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                text-decoration: none;
+                padding-right: .7rem;
+                color: white;
+                font-weight: 800;
+                width: calc(100% - .7rem);
+                margin-left: .7rem;
+
+
+                &:hover {
+                    position: relative;
+                    border-bottom: solid 1px white;
+
+                    span {
+                        &::after {
+                            position: absolute;
+                            content: '';
+                            background-color: white;
+                            width: 5px;
+                            height: 7px;
+                            right: 0;
+                            bottom: 0;
+
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+        }
+    }
+
+    .sider__rigth {
+        display: flex;
+        gap: .5rem;
+        margin-right: .5rem;
+
+        i {
+            cursor: pointer;
+        }
+    }
+}

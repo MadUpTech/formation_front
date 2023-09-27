@@ -1,0 +1,42 @@
+<div class="examen__container">
+    <header>
+        <select (change)="changeListByModule($event)" class="form-select select" name="" id="">
+            <option *ngFor="let item of listModule" [value]="item.id">{{item.nom}}</option>
+        </select>
+        <div class="__size">
+            <input disabled type="number" class="form-control" [placeholder]="'Nombre examen: '+sizeExamenByModule">
+        </div>
+    </header>
+    <main>
+        <div></div>
+        <table class="table table-group-divider">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Client</th>
+                    <th>Rendre</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let item of examenListBySum | paginate:{itemsPerPage:9,currentPage:page,totalItems:totalPageItems}; let i=index">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.user!.nom}}</td>
+                    <td>{{item.sumStatus}} sur {{sizeExamenByModule}}</td>
+                    <td *ngIf="sizeExamenByModule > item.sumStatus!">Insuffisant</td>
+                    <td *ngIf="sizeExamenByModule == item.sumStatus!">Compler</td>
+                    <td>
+                        <button (click)="voirDetails(item.idModule!,item.user!.id!)"
+                            class="btn btn-sm btn-success">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="examenListBySum && examenListBySum.length > 9" class="pagination">
+            <pagination-controls (pageChange)="page=$event" [autoHide]="true" [responsive]="true"
+                previousLabel="Precendent" nextLabel="Suivant"></pagination-controls>
+        </div>
+    </main>
+</div>
