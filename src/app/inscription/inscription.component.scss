@@ -1,0 +1,175 @@
+.login_inscription{
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('./../../assets/images/bg3.jpg');
+    animation: animateBg 5s linear infinite;
+
+    .inscription-box{
+      position: relative;
+      width: 800px;
+      height: 420px;
+      border: 2px solid rgba(255,255,255,.5);
+      background: transparent;
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(15px);
+      padding-bottom: 0px;
+              .titre_inscription{
+
+                text-align: center;
+                color: rgb(247, 243, 243);
+              }
+              .inscription{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .input_box{
+                  position: relative;
+                  width: 300px;
+                  margin: 30px 0;
+                  margin-inline: 20px;
+                  border-bottom: 2px solid rgb(240, 237, 243);
+
+                }
+                .button_confirm{
+                  position: relative;
+                  width: 310px;
+                  margin: 30px 0;
+                  margin-inline: 20px;
+                }
+                .input_box label{
+                  position: absolute;
+                  top: 7%;
+                  left: 5px;
+                  transform: translateY(-60%);
+                  font-size: 1em;
+                  color: #fff;
+                  pointer-events: none;
+                  transition: .5s;
+                }
+                .input_box span{
+                  color: red;
+                  font-size: 11px;
+                  height: 15px;
+                  padding: 0;
+
+
+                }
+
+
+                .input_box input:focus~label,
+                .input_box input:invalid~label{
+                  top: -13px;
+                }
+
+                .input_box input{
+                  width: 100%;
+                  height: 40px;
+                  background: transparent;
+                  top: 0;
+                  border: none;
+                  outline: none;
+                  font-size: 1em;
+                  color: #e0d5d5;
+                  padding:0 35px 0 5px;
+
+                }
+                .button_confirm button:disabled{
+                  width: 100%;
+                  height: 40px;
+                  background: #fff;
+                  border: none;
+                  outline: none;
+                  border-radius: 40px;
+                }
+                .button_confirm button:enabled{
+                  width: 100%;
+                  height: 40px;
+                  background:rgb(25, 127, 255);
+                  border: none;
+                  cursor: pointer;
+                  outline: none;
+                  border-radius: 40px;
+                }
+
+              }
+           }
+
+  }
+  @media (max-width:800px) {
+    .login_inscription{
+
+      width: 100%;
+      min-height: 100vh;
+
+      .inscription-box{
+        position: relative;
+        width:600px;
+        height: 100vh;
+        border-radius: 20px;
+                .inscription{
+                  display: contents;
+                  justify-content: center;
+                  align-items: center;
+                }
+             }
+
+    }
+
+  }
+  @media (max-width:600px) {
+    .login_inscription{
+
+      width: 100%;
+      min-height: 100vh;
+
+      .inscription-box{
+        position: relative;
+        width:500px;
+        height: 100vh;
+        border-radius: 0;
+
+                .inscription{
+                  display: contents;
+                  justify-content: center;
+                  align-items: center;
+                }
+             }
+
+    }
+  }
+  @media (max-width:400px) {
+    .login_inscription{
+
+      width: 100%;
+      min-height: 100vh;
+
+      .inscription-box{
+        position: relative;
+        width:100%;
+        height: 100vh;
+        border-radius: 0;
+
+                .inscription{
+                  display: contents;
+                  justify-content: center;
+                  align-items: center;
+
+                }
+             }
+
+    }
+  }
+  @keyframes  animateBg{
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
+
